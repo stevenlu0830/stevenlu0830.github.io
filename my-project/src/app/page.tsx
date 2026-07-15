@@ -1,5 +1,7 @@
+import Image from "next/image";
+import avatar from "../../icons/avatar.jpg";
+
 const NAV_ITEMS = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
@@ -375,7 +377,14 @@ export default function Home() {
   return (
     <div>
       <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur lg:fixed lg:inset-y-0 lg:left-0 lg:w-56 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:bg-background lg:backdrop-blur-none">
-        <nav className="mx-auto flex max-w-4xl flex-wrap gap-x-5 gap-y-1 px-6 py-3 text-sm lg:mx-0 lg:max-w-none lg:flex-col lg:gap-y-3 lg:py-10">
+        <nav className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-5 gap-y-1 px-6 py-3 text-sm lg:mx-0 lg:max-w-none lg:flex-col lg:items-start lg:gap-y-3 lg:py-10">
+          <a href="#home" className="shrink-0">
+            <Image
+              src={avatar}
+              alt="Home"
+              className="h-8 w-8 rounded-full border border-border object-cover transition-colors hover:border-accent lg:h-14 lg:w-14"
+            />
+          </a>
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -392,11 +401,19 @@ export default function Home() {
         <main className="mx-auto max-w-4xl px-6 pb-24">
         {/* Home */}
         <section id="home" className="pt-24 text-center">
-          <h1 className="mt-4 text-5xl font-bold tracking-tight">Steven Lu</h1>
-          <p className="mt-4 text-muted">
+          <Image
+            src={avatar}
+            alt=""
+            priority
+            className="mx-auto h-36 w-36 rounded-full border-2 border-border object-cover"
+          />
+          <h1 className="mt-6 text-5xl font-bold tracking-tight text-accent">
+            Steven Lu
+          </h1>
+          <p className="mt-4 text-foreground">
             Computer Science (AI Option) @ The University of British Columbia
           </p>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2 text-sm text-foreground">
             AI · Machine Learning · Software Engineering · Data Science · Web
             Development
           </p>
