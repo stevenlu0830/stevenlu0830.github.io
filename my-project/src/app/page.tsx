@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import avatar from "../../icons/avatar.jpg";
+import { EXPERIENCE } from "@/data/experience";
 
 const NAV_ITEMS = [
   { label: "About", href: "#about" },
@@ -12,25 +14,6 @@ const NAV_ITEMS = [
   { label: "Volunteering", href: "#volunteering" },
   { label: "Fun Facts", href: "#fun-facts" },
   { label: "Contacts", href: "#contacts" },
-];
-
-const EXPERIENCE = [
-  {
-    title: "Software Engineer",
-    org: "Fano (Fano Labs) · Co-op",
-    meta: "Jun 2026 – Present · Hong Kong SAR · Hybrid",
-    bullets: [],
-  },
-  {
-    title: "Artificial Intelligence Engineer",
-    org: "Dyna.Ai · Internship",
-    meta: "Jun 2025 – Jul 2025 · Hong Kong SAR · On-site",
-    bullets: [
-      "Led the integration of LLMs into business processes such as credit card marketing and HR recruitment to streamline workflows, enable automation and reduce human effort.",
-      "Compared and analysed the performance of AI agent studios using Dyna's LLM-based AI Agent Builder Platform, leveraging knowledge management, knowledge space, and character configuration to evaluate effectiveness and optimize outcomes.",
-      "Collaborated with a banking client to gather, track, and regularly refine user requirements, ensuring alignment between business needs and AI solution design.",
-    ],
-  },
 ];
 
 const PROJECTS = [
@@ -407,13 +390,13 @@ export default function Home() {
             priority
             className="mx-auto h-36 w-36 rounded-full border-2 border-border object-cover"
           />
-          <h1 className="mt-6 text-5xl font-bold tracking-tight text-accent">
+          <h1 className="mt-6 text-5xl font-bold tracking-tight text-[#dcdcaa]">
             Steven Lu
           </h1>
-          <p className="mt-4 text-foreground">
+          <p className="mt-4 text-[#dea893]">
             Computer Science (AI Option) @ The University of British Columbia
           </p>
-          <p className="mt-2 text-sm text-foreground">
+          <p className="mt-2 text-sm text-[#dea893]">
             AI · Machine Learning · Software Engineering · Data Science · Web
             Development
           </p>
@@ -439,8 +422,26 @@ export default function Home() {
 
         {/* Experience */}
         <Section id="experience" title="💻 Experience">
-          {EXPERIENCE.map((e) => (
-            <Entry key={e.title} {...e} />
+          {EXPERIENCE.map((job) => (
+            <Link
+              key={job.slug}
+              href={`/experience/${job.slug}`}
+              className="group block rounded border border-border bg-surface p-5 transition-colors hover:border-accent"
+            >
+              <div className="flex items-baseline justify-between gap-4">
+                <h3 className="text-lg font-bold text-[#dcdcaa]">
+                  {job.title}
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-muted transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </div>
+              <p className="text-[#9ddcff]">{job.org}</p>
+              <p className="text-sm text-[#9ddcff]">{job.meta}</p>
+            </Link>
           ))}
         </Section>
 
