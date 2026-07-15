@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import { PROJECTS } from "@/data/projects";
@@ -34,6 +35,17 @@ export default async function ProjectPage({
         <h1 className="text-3xl font-bold text-[#dcdcaa]">{project.name}</h1>
         <p className="mt-3 text-sm text-[#9ddcff]">{project.dates}</p>
 
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.skills.map((s) => (
+            <span
+              key={s}
+              className="inline-block rounded border border-border bg-surface px-2 py-0.5 text-xs text-[#9ddcff]"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
         <section className="mt-10">
           <div className="mt-4 space-y-4 leading-relaxed text-[#dea893]">
             <p>{project.context}</p>
@@ -49,18 +61,55 @@ export default async function ProjectPage({
           </div>
         </section>
 
-        <section className="mt-10">
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.skills.map((s) => (
-              <span
-                key={s}
-                className="inline-block rounded border border-border bg-surface px-2 py-0.5 text-xs text-[#9ddcff]"
-              >
-                {s}
-              </span>
+        {((project.links && project.links.length > 0) ||
+          (project.attachments && project.attachments.length > 0)) && (
+          <section className="mt-10 space-y-10">
+            {project.links && project.links.length > 0 && (
+              <div className="flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded border border-border bg-surface px-3 py-1 text-sm text-[#9ddcff] transition-colors hover:border-[#dcdcaa]"
+                  >
+                    {link.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+            {project.attachments?.map((attachment) => (
+              <figure key={attachment.src}>
+                <figcaption className="mb-2 text-sm">
+                  <a
+                    href={attachment.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#9ddcff] transition-colors hover:text-[#dcdcaa]"
+                  >
+                    {attachment.label} <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+                {attachment.kind === "pdf" ? (
+                  <iframe
+                    src={attachment.src}
+                    title={attachment.label}
+                    className="h-[36rem] w-full rounded border border-border"
+                  />
+                ) : (
+                  <Image
+                    src={attachment.src}
+                    alt={attachment.label}
+                    width={attachment.width}
+                    height={attachment.height}
+                    className="h-auto w-full max-w-2xl rounded border border-border"
+                  />
+                )}
+              </figure>
             ))}
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </div>
   );

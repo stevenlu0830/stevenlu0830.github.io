@@ -1,11 +1,26 @@
+export type ProjectLink = { label: string; href: string };
+
+export type ProjectAttachment =
+  | { kind: "pdf"; label: string; src: string }
+  | {
+      kind: "image";
+      label: string;
+      src: string;
+      width: number;
+      height: number;
+    };
+
 export type Project = {
   slug: string;
   name: string;
   dates: string;
   context: string;
-  description: string;
+  /** A single paragraph, or an array of paragraphs */
+  description: string | string[];
   bullets: string[];
   skills: string[];
+  links?: ProjectLink[];
+  attachments?: ProjectAttachment[];
 };
 
 export const PROJECTS: Project[] = [
@@ -22,6 +37,18 @@ export const PROJECTS: Project[] = [
       "Pre-processed data by handling missing values and reducing dataset size to improve processing efficiency",
     ],
     skills: ["Matplotlib", "PyMongo", "Jupyter Lab", "Scikit-learn", "MongoDB"],
+    attachments: [
+      {
+        kind: "pdf",
+        label: "Project Presentation — Lights, Camera, Correlation (PDF)",
+        src: "/projects-file-attachments/film-industry-1.pdf",
+      },
+      {
+        kind: "pdf",
+        label: "Formal Report (PDF)",
+        src: "/projects-file-attachments/film-industry-2.pdf",
+      },
+    ],
   },
   {
     slug: "ubc-grade-calculator",
@@ -29,13 +56,19 @@ export const PROJECTS: Project[] = [
     dates: "Jan 2026",
     context: "nwHacks 2026 Hackathon Project",
     description:
-      "Lots of grade calculators on the web are too simple and miss the subtle breakdown of course grades, such as the contribution of a single assignment or a single phase of a course project. UBC Grade Calculator is a web application vibe-coded with Lovable AI that simplifies the grade calculation process with user-friendly interfaces and drop/downweighting grade settings — the app calculates the final grades for you.",
+      "We often used grade calculators on the website to calculate course grades in order to track the progress of our courses so far. However, lots of calculators we found on the website are too simple such that they’ve missed subtle breakdown of course grades such as the contributions to course grade by one single assignment or one single phase of course project. Perhaps a spreadsheet would help, but you need to create a table, enter the formula to calculate the course grades. For better approximation you also need to take account of dropping or downweighting lowest grades if necessary which makes the formula more complex. UBC Grade Calculator is a web application vibe-coded by Lovable AI to simplify grade calculation process by user-friendly interfaces, buttons and drop/downweighting grade settings, and the app calculates the final grades for you.",
     bullets: [
       "Conceptualized and rapidly prototyped a comprehensive web application during nwHacks 2026, utilizing ChatGPT for feature ideation and Lovable AI for rapid code generation and deployment.",
       "Engineered intuitive user interfaces that simplify complex grading calculations, allowing students to dynamically track assignment breakdowns, project phases, and overall course progress.",
       "Implemented advanced grade-tracking logic, including customized settings for dropping or downweighting the lowest grades, replacing manual and complex spreadsheet formulas with a seamless, automated tool.",
     ],
     skills: ["Lovable", "Vibe Coding"],
+    links: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/stevenlu0830/grade-calculator",
+      },
+    ],
   },
   {
     slug: "ubc-section-insights",
@@ -57,6 +90,12 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Software Engineering",
     ],
+    links: [
+      {
+        label: "Demo Video (YouTube)",
+        href: "https://youtu.be/iOwl0U4kJtI",
+      },
+    ],
   },
   {
     slug: "umbra",
@@ -72,6 +111,21 @@ export const PROJECTS: Project[] = [
       "Collaborated with the art teams and the writing team to create a new level and add 8 elements to the level",
     ],
     skills: ["GitHub", "Godot", "GD Script", "Game Programming"],
+    links: [
+      {
+        label: "Steam Store Page",
+        href: "https://store.steampowered.com/app/3553640/Umbra/",
+      },
+    ],
+    attachments: [
+      {
+        kind: "image",
+        label: "Best Graphics — 2025 year-end showcase announcement",
+        src: "/projects-file-attachments/umbra-by-avalon-games.png",
+        width: 1540,
+        height: 1504,
+      },
+    ],
   },
   {
     slug: "nest-finder",
@@ -86,6 +140,12 @@ export const PROJECTS: Project[] = [
       "Designed the user interface by drawing the layout of different pages and creating the transitions between them using Figma",
     ],
     skills: ["HTML", "CSS", "JavaScript", "Figma", "Front-End Development"],
+    links: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/anthonyl8/nest-finder",
+      },
+    ],
   },
   {
     slug: "homework-tracking",
@@ -108,6 +168,12 @@ export const PROJECTS: Project[] = [
       "User Stories",
       "VS Code",
     ],
+    links: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/stevenlu0830/Project-2024W1-CPSC-210",
+      },
+    ],
   },
   {
     slug: "heart-disease-prediction",
@@ -123,6 +189,19 @@ export const PROJECTS: Project[] = [
       "Evaluated the performance of the model by finding its accuracy and calculating precision and recall",
     ],
     skills: ["Matplotlib", "tidyverse", "GitHub", "Jupyter Lab", "R tidymodels"],
+    links: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/stevenlu0830/dsci-100-2024-s1-project",
+      },
+    ],
+    attachments: [
+      {
+        kind: "pdf",
+        label: "Project Report (PDF)",
+        src: "/projects-file-attachments/heart-disease-prediction.pdf",
+      },
+    ],
   },
   {
     slug: "yap",
@@ -137,5 +216,11 @@ export const PROJECTS: Project[] = [
       "Created a user-friendly and visually appealing interface using Adobe XD",
     ],
     skills: ["User Interface Design", "Teamwork", "Adobe XD"],
+    links: [
+      {
+        label: "LinkedIn Post",
+        href: "https://www.linkedin.com/feed/update/urn:li:activity:7205961981890080768/",
+      },
+    ],
   },
 ];
