@@ -44,7 +44,7 @@ export default async function CertificationPage({
                 rel="noopener noreferrer"
                 className="text-[#9ddcff] transition-colors hover:text-[#dcdcaa]"
               >
-                {cert.name} (PDF) <span aria-hidden="true">↗</span>
+                {cert.name} <span aria-hidden="true">↗</span>
               </a>
             </figcaption>
             <iframe

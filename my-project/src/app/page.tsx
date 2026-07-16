@@ -117,6 +117,38 @@ const SONGS_OTHER = [
   },
 ];
 
+const CONTACTS: {
+  type: string;
+  href: string;
+  text: string;
+  icon: string;
+  external: boolean;
+  invert?: boolean;
+}[] = [
+  {
+    type: "LinkedIn",
+    href: "https://www.linkedin.com/in/stevenlu0830/",
+    text: "linkedin.com/in/stevenlu0830",
+    icon: "/contact-icons/linkedin.svg.webp",
+    external: true,
+  },
+  {
+    type: "Email",
+    href: "mailto:stevenlu0830@gmail.com",
+    text: "stevenlu0830@gmail.com",
+    icon: "/contact-icons/gmail.svg.webp",
+    external: false,
+  },
+  {
+    type: "GitHub",
+    href: "https://github.com/stevenlu0830",
+    text: "github.com/stevenlu0830",
+    icon: "/contact-icons/github.png",
+    external: true,
+    invert: true,
+  },
+];
+
 function Section({
   id,
   title,
@@ -434,44 +466,49 @@ export default function Home() {
         {/* Contacts — TODO: replace the placeholder links below with your real
             LinkedIn URL, email address, and GitHub username before publishing */}
         <Section id="contacts" title="🤝 Contacts — Let's connect!">
+          <div className="flex gap-5">
+            {CONTACTS.map((c) => (
+              <a
+                key={c.type}
+                href={c.href}
+                aria-label={c.type}
+                {...(c.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="transition-transform hover:-translate-y-0.5"
+              >
+                <Image
+                  src={c.icon}
+                  alt={c.type}
+                  width={32}
+                  height={32}
+                  unoptimized
+                  className={`h-16 w-16 object-contain${c.invert ? " invert" : ""}`}
+                />
+              </a>
+            ))}
+          </div>
           <ul className="space-y-2 text-sm">
-            <li>
-              <span className="text-accent">LinkedIn: </span>
-              <a
-                href="https://www.linkedin.com/in/stevenlu0830/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-border underline-offset-4 hover:text-accent"
-              >
-                linkedin.com/in/stevenlu0830
-              </a>
-            </li>
-            <li>
-              <span className="text-accent">Email: </span>
-              <a
-                href="mailto:stevenlu0830@gmail.com"
-                className="underline decoration-border underline-offset-4 hover:text-accent"
-              >
-                stevenlu0830@gmail.com
-              </a>
-            </li>
-            <li>
-              <span className="text-accent">GitHub: </span>
-              <a
-                href="https://github.com/stevenlu0830"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-border underline-offset-4 hover:text-accent"
-              >
-                github.com/stevenlu0830
-              </a>
-            </li>
+            {CONTACTS.map((c) => (
+              <li key={c.type}>
+                <span className="text-[#dcdcaa]">{c.type}: </span>
+                <a
+                  href={c.href}
+                  {...(c.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="text-[#9ddcff] underline decoration-border underline-offset-4 transition-colors hover:text-[#4a90c2]"
+                >
+                  {c.text}
+                </a>
+              </li>
+            ))}
           </ul>
         </Section>
 
         </main>
 
-        <footer className="mx-auto max-w-4xl border-t border-border px-6 py-6 text-center text-xs text-muted">
+        <footer className="mx-auto max-w-4xl border-t border-border px-6 py-6 text-center text-xs text-[#dea893]">
           <p>© 2026 Steven Lu · Built with Next.js</p>
         </footer>
       </div>
