@@ -3,6 +3,8 @@ import Link from "next/link";
 import avatar from "../../icons/avatar.jpg";
 import SiteNav from "@/components/SiteNav";
 import PipInstall from "@/components/PipInstall";
+import AboutRunner from "@/components/AboutRunner";
+import { InstallProvider } from "@/components/InstallContext";
 import {
   ProjectCard,
   CertificationCard,
@@ -211,6 +213,7 @@ export default function Home() {
       <SiteNav />
 
       <div className="lg:pl-56">
+        <InstallProvider>
         <main className="mx-auto max-w-4xl px-6 pb-24">
         {/* Home */}
         <section id="home" className="pt-24 text-center">
@@ -234,22 +237,7 @@ export default function Home() {
         </section>
 
         {/* About */}
-        <Section id="about" title="🤓 About">
-          <p className="leading-relaxed">
-            Hi, I&apos;m Steven! I am a third-year Computer Science student at
-            the University of British Columbia, specializing in the AI Option.
-            I have a strong interest in artificial intelligence, machine
-            learning, software engineering, data science, and web development,
-            and I am currently seeking internship and co-op opportunities to
-            apply my skills.
-          </p>
-          <p className="leading-relaxed">
-            Outside of my studies, I enjoy playing badminton, bowling,
-            listening to music, singing and travelling. I&apos;m always open to
-            new opportunities and networking — feel free to reach out and
-            connect!
-          </p>
-        </Section>
+        <AboutRunner />
 
         {/* Experience */}
         <Section id="experience" title="💻 Experience">
@@ -454,6 +442,7 @@ export default function Home() {
         </Section>
 
         </main>
+        </InstallProvider>
 
         <footer className="mx-auto max-w-4xl border-t border-border px-6 py-6 text-center text-xs text-[#dea893]">
           <p>© 2026 Steven Lu · Built with Next.js</p>

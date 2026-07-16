@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useInstall } from "./InstallContext";
 
 type RunState = "idle" | "running" | "done";
 
 export default function PipInstall() {
   const [state, setState] = useState<RunState>("idle");
+  const { install } = useInstall();
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const run = () => {
@@ -13,7 +15,10 @@ export default function PipInstall() {
     // Show "Collecting…" immediately, then the success line shortly after,
     // to simulate pip actually doing the install.
     setState("running");
-    timer.current = setTimeout(() => setState("done"), 900);
+    timer.current = setTimeout(() => {
+      setState("done");
+      install();
+    }, 900);
   };
 
   return (
@@ -21,9 +26,14 @@ export default function PipInstall() {
       <div className="rounded border border-border bg-surface">
         {/* read-only code + Run button */}
         <div className="flex items-center gap-3 px-4 py-3">
-          <code className="flex-1 select-none text-sm">
-            <span className="text-[#f44747]">!</span>
-            <span className="text-[#dddddd]">pip install stevenlu0830</span>
+          <code className="flex-1 select-none text-sm leading-relaxed">
+            <span className="block text-[#6a9955]">
+              # Run this first!
+            </span>
+            <span className="block">
+              <span className="text-[#f44747]">!</span>
+              <span className="text-[#dddddd]">pip install stevenlu0830</span>
+            </span>
           </code>
           <button
             type="button"

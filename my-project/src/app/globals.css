@@ -12,6 +12,10 @@
 /* #dcdcaa (i.e. function name light yellow) */
 /* #f44747 (i.e. pip local install red) */
 /* #dddddd (i.e. CLI white) */
+/* #c586c0 (i.e. from import purple) */
+/* #ffd800 (i.e. brackets yellow) */
+/* #d670d6 (i.e. error name purple) */
+/* #c152be (i.e. error message dark purple) */
 
 @theme inline {
   --color-background: var(--background);
