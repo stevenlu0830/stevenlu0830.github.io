@@ -1,23 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import avatar from "../../icons/avatar.jpg";
+import SiteNav from "@/components/SiteNav";
 import { EXPERIENCE } from "@/data/experience";
 import { PROJECTS } from "@/data/projects";
 import { CERTIFICATIONS } from "@/data/certifications";
 import { VOLUNTEERING } from "@/data/volunteering";
-
-const NAV_ITEMS = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Technical Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
-  { label: "Relevant Courses", href: "#courses" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Volunteering", href: "#volunteering" },
-  { label: "Fun Facts", href: "#fun-facts" },
-  { label: "Contacts", href: "#contacts" },
-];
 
 type Skill = { name: string; icon: string; invert?: boolean };
 
@@ -211,26 +199,7 @@ function SongList({
 export default function Home() {
   return (
     <div>
-      <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur lg:fixed lg:inset-y-0 lg:left-0 lg:w-56 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:bg-background lg:backdrop-blur-none">
-        <nav className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-5 gap-y-1 px-6 py-3 text-sm lg:mx-0 lg:max-w-none lg:flex-col lg:items-start lg:gap-y-3 lg:py-10">
-          <a href="#home" className="shrink-0">
-            <Image
-              src={avatar}
-              alt="Home"
-              className="h-8 w-8 rounded-full border border-border object-cover transition-colors hover:border-accent lg:h-14 lg:w-14"
-            />
-          </a>
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-muted transition-colors hover:text-accent"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+      <SiteNav />
 
       <div className="lg:pl-56">
         <main className="mx-auto max-w-4xl px-6 pb-24">

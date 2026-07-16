@@ -24,9 +24,22 @@ export default function BackButton({
           router.push(fallback);
         }
       }}
-      className="fixed left-6 top-6 cursor-pointer text-3xl text-muted transition-colors hover:text-[#dcdcaa]"
+      className="fixed left-6 top-6 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface text-muted transition-colors hover:border-[#dcdcaa] hover:text-[#dcdcaa]"
     >
-      <span aria-hidden="true">←</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+        aria-hidden="true"
+      >
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+      </svg>
     </button>
   );
 }
