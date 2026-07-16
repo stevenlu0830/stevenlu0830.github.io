@@ -1,2 +1,5 @@
 # Personal Claude Code settings (machine-specific)
 .claude/settings.local.json
+
+# macOS Finder metadata
+.DS_Store
