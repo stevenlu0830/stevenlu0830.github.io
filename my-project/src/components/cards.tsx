@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Job } from "@/data/experience";
 import type { Project } from "@/data/projects";
 import type { Certification } from "@/data/certifications";
 import type { Volunteering } from "@/data/volunteering";
@@ -22,6 +23,19 @@ export function SkillTag({ label }: { label: string }) {
     <span className="inline-block rounded border border-border bg-background px-2 py-0.5 text-xs text-muted">
       {label}
     </span>
+  );
+}
+
+export function ExperienceCard({ job }: { job: Job }) {
+  return (
+    <Link href={`/experience/${job.slug}`} className={CARD_BASE}>
+      <div className="flex items-baseline justify-between gap-4">
+        <h3 className="text-lg font-bold text-[#dcdcaa]">{job.title}</h3>
+        <Arrow />
+      </div>
+      <p className="text-[#9ddcff]">{job.org}</p>
+      <p className="text-sm text-[#9ddcff]">{job.meta}</p>
+    </Link>
   );
 }
 

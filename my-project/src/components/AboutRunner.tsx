@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useInstall } from "./InstallContext";
 
 const INTRO = [
@@ -9,12 +8,11 @@ const INTRO = [
 ];
 
 export default function AboutRunner() {
-  const { installed } = useInstall();
-  const [output, setOutput] = useState<null | "intro" | "error">(null);
+  const { installed, aboutOutput: output, setAboutOutput } = useInstall();
 
   // Capture the result at the moment Run is clicked (like a real REPL cell),
   // so it doesn't change on its own if the install state changes afterwards.
-  const run = () => setOutput(installed ? "intro" : "error");
+  const run = () => setAboutOutput(installed ? "intro" : "error");
 
   return (
     <section id="about" className="mt-20">
@@ -22,6 +20,9 @@ export default function AboutRunner() {
         {/* read-only 3-line code + Run button */}
         <div className="flex items-center gap-3 px-4 py-3">
           <code className="flex-1 select-none text-sm leading-relaxed">
+            <span className="block text-[#6a9955]">
+              # Reminder: Run the above code box first
+            </span>
             <span className="block">
               <span className="text-[#c586c0]">from </span>
               <span className="text-[#4fc9af]">stevenlu0830</span>

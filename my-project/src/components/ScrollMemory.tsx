@@ -38,22 +38,51 @@ export default function ScrollMemory() {
     if (saved === null) return;
     const y = Number(saved);
 
-    // Scrolling is instant site-wide (smooth is scoped to in-page nav clicks
-    // via SmoothAnchors), so the restore never animates. Running before paint
-    // means the page's first frame is already at the saved position — the
-    // user sees no motion. The rAF loop just waits for the page to reach full
-    // height before scrolling, in case layout isn't settled on the first frame.
+    // The code-box outputs (pip / About / Experience) restore from
+    // sessionStorage a few frames after mount, which grows the page height
+    // above the saved position. So we re-assert the scroll position every
+    // frame and only stop once the height has held steady for a few frames
+    // (i.e. all outputs are back) — that final scroll lands on exactly the
+    // layout the user left, not a shorter intermediate one.
     let tries = 0;
-    const restore = () => {
-      const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      if (maxY >= y || tries > 60) {
-        window.scrollTo(0, y);
-      } else {
-        tries += 1;
-        requestAnimationFrame(restore);
-      }
+    let prevHeight = -1;
+    let stableFrames = 0;
+    let cancelled = false;
+
+    const stop = () => {
+      cancelled = true;
     };
-    restore();
+    // If the user starts scrolling themselves, stop fighting them.
+    window.addEventListener("wheel", stop, { passive: true, once: true });
+    window.addEventListener("touchstart", stop, { passive: true, once: true });
+    window.addEventListener("keydown", stop, { once: true });
+
+    const step = () => {
+      if (cancelled) return;
+      window.scrollTo(0, y);
+      const h = document.documentElement.scrollHeight;
+      if (h === prevHeight) {
+        stableFrames += 1;
+      } else {
+        stableFrames = 0;
+        prevHeight = h;
+      }
+      // Keep re-asserting for a minimum window (outputs restore a few frames
+      // in and grow the page) and only stop once the height has then settled.
+      // Without the tries>=12 floor we'd stop during the brief "stably short"
+      // window before the outputs load and land too low.
+      if ((tries >= 12 && stableFrames >= 4) || tries > 40) return;
+      tries += 1;
+      requestAnimationFrame(step);
+    };
+    step();
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("wheel", stop);
+      window.removeEventListener("touchstart", stop);
+      window.removeEventListener("keydown", stop);
+    };
   }, [pathname]);
 
   return null;

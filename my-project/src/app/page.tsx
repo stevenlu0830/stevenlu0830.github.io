@@ -4,13 +4,12 @@ import avatar from "../../icons/avatar.jpg";
 import SiteNav from "@/components/SiteNav";
 import PipInstall from "@/components/PipInstall";
 import AboutRunner from "@/components/AboutRunner";
-import { InstallProvider } from "@/components/InstallContext";
+import ExperienceRunner from "@/components/ExperienceRunner";
 import {
   ProjectCard,
   CertificationCard,
   VolunteeringCard,
 } from "@/components/cards";
-import { EXPERIENCE } from "@/data/experience";
 import { PROJECTS } from "@/data/projects";
 import { CERTIFICATIONS } from "@/data/certifications";
 import { VOLUNTEERING } from "@/data/volunteering";
@@ -213,7 +212,6 @@ export default function Home() {
       <SiteNav />
 
       <div className="lg:pl-56">
-        <InstallProvider>
         <main className="mx-auto max-w-4xl px-6 pb-24">
         {/* Home */}
         <section id="home" className="pt-24 text-center">
@@ -240,29 +238,7 @@ export default function Home() {
         <AboutRunner />
 
         {/* Experience */}
-        <Section id="experience" title="💻 Experience">
-          {EXPERIENCE.map((job) => (
-            <Link
-              key={job.slug}
-              href={`/experience/${job.slug}`}
-              className="group block rounded border border-border bg-surface p-5 transition-colors hover:border-[#dcdcaa]"
-            >
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="text-lg font-bold text-[#dcdcaa]">
-                  {job.title}
-                </h3>
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 text-muted transition-transform group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </div>
-              <p className="text-[#9ddcff]">{job.org}</p>
-              <p className="text-sm text-[#9ddcff]">{job.meta}</p>
-            </Link>
-          ))}
-        </Section>
+        <ExperienceRunner />
 
         {/* Projects */}
         <Section id="projects" title="👨🏻‍💻 Projects">
@@ -442,7 +418,6 @@ export default function Home() {
         </Section>
 
         </main>
-        </InstallProvider>
 
         <footer className="mx-auto max-w-4xl border-t border-border px-6 py-6 text-center text-xs text-[#dea893]">
           <p>© 2026 Steven Lu · Built with Next.js</p>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import ScrollMemory from "@/components/ScrollMemory";
 import SmoothAnchors from "@/components/SmoothAnchors";
+import { InstallProvider } from "@/components/InstallContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ScrollMemory />
         <SmoothAnchors />
-        {children}
+        <InstallProvider>{children}</InstallProvider>
       </body>
     </html>
   );

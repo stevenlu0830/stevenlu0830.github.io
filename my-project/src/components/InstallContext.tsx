@@ -2,16 +2,48 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-type InstallCtx = { installed: boolean; install: () => void };
+type AboutOutput = null | "intro" | "error";
+type ExperienceOutput = null | "cards" | "error";
 
-const Ctx = createContext<InstallCtx>({ installed: false, install: () => {} });
+type CellCtx = {
+  installed: boolean;
+  install: () => void;
+  aboutOutput: AboutOutput;
+  setAboutOutput: (v: AboutOutput) => void;
+  experienceOutput: ExperienceOutput;
+  setExperienceOutput: (v: ExperienceOutput) => void;
+};
 
-// Shares the "stevenlu0830 is pip-installed" flag between the pip cell (home)
-// and the About cell, so About only "runs" after the user installs.
+const Ctx = createContext<CellCtx>({
+  installed: false,
+  install: () => {},
+  aboutOutput: null,
+  setAboutOutput: () => {},
+  experienceOutput: null,
+  setExperienceOutput: () => {},
+});
+
+// Holds the interactive code-cell state (pip installed, About / Experience
+// outputs). Rendered in the ROOT LAYOUT, so the state survives client-side
+// navigation (detail page → back) but is in-memory only — a full page refresh
+// remounts the layout and resets every cell to "not run".
 export function InstallProvider({ children }: { children: ReactNode }) {
   const [installed, setInstalled] = useState(false);
+  const [aboutOutput, setAboutOutput] = useState<AboutOutput>(null);
+  const [experienceOutput, setExperienceOutput] =
+    useState<ExperienceOutput>(null);
+
   return (
-    <Ctx.Provider value={{ installed, install: () => setInstalled(true) }}>
+    <Ctx.Provider
+      value={{
+        installed,
+        install: () => setInstalled(true),
+        aboutOutput,
+        setAboutOutput,
+        experienceOutput,
+        setExperienceOutput,
+      }}
+    >
       {children}
     </Ctx.Provider>
   );

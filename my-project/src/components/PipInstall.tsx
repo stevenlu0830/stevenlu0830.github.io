@@ -7,7 +7,7 @@ type RunState = "idle" | "running" | "done";
 
 export default function PipInstall() {
   const [state, setState] = useState<RunState>("idle");
-  const { install } = useInstall();
+  const { installed, install } = useInstall();
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const run = () => {
@@ -21,6 +21,11 @@ export default function PipInstall() {
     }, 900);
   };
 
+  // Reflect a restored install (from a previous session/navigation): show the
+  // completed output without replaying the animation.
+  const showOutput = state !== "idle" || installed;
+  const showSuccess = state === "done" || installed;
+
   return (
     <div className="mt-10 w-full text-left">
       <div className="rounded border border-border bg-surface">
@@ -28,7 +33,7 @@ export default function PipInstall() {
         <div className="flex items-center gap-3 px-4 py-3">
           <code className="flex-1 select-none text-sm leading-relaxed">
             <span className="block text-[#6a9955]">
-              # Run this first!
+              # Run this before running all code boxes below
             </span>
             <span className="block">
               <span className="text-[#f44747]">!</span>
@@ -46,10 +51,10 @@ export default function PipInstall() {
         </div>
 
         {/* simulated CLI output */}
-        {state !== "idle" && (
+        {showOutput && (
           <div className="border-t border-border px-4 py-3 text-sm text-[#dddddd]">
             <p>Collecting stevenlu0830</p>
-            {state === "done" && <p>Successfully installed stevenlu0830</p>}
+            {showSuccess && <p>Successfully installed stevenlu0830</p>}
           </div>
         )}
       </div>
