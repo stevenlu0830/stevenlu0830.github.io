@@ -3,7 +3,7 @@
 import { useInstall } from "./InstallContext";
 
 const INTRO = [
-  "Hi, I'm Steven! I am a third-year Computer Science student at the University of British Columbia, specializing in the AI Option. I have a strong interest in artificial intelligence, machine learning, software engineering, data science, and web development, and I am currently seeking internship and co-op opportunities to apply my skills.",
+  "Hello World, I'm Steven! I am a third-year Computer Science student at the University of British Columbia, specializing in the AI Option. I have a strong interest in artificial intelligence, machine learning, software engineering, data science, and web development, and I am currently seeking internship and co-op opportunities to apply my skills.",
   "Outside of my studies, I enjoy playing badminton, bowling, listening to music, singing and travelling. I'm always open to new opportunities and networking — feel free to reach out and connect!",
 ];
 

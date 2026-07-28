@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Job } from "@/data/experience";
 import type { Project } from "@/data/projects";
@@ -15,6 +16,20 @@ function Arrow() {
     >
       →
     </span>
+  );
+}
+
+// Big organization logo shown at the leftmost side of a card.
+function OrgLogo({ src, alt }: { src: string; alt: string }) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={64}
+      height={64}
+      unoptimized
+      className="h-16 w-16 shrink-0 rounded bg-white object-contain p-1"
+    />
   );
 }
 
@@ -47,12 +62,17 @@ export function ViewAllButton({
 export function ExperienceCard({ job }: { job: Job }) {
   return (
     <Link href={`/experience/${job.slug}`} className={CARD_BASE}>
-      <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-lg font-bold text-[var(--fn)]">{job.title}</h3>
-        <Arrow />
+      <div className="flex items-center gap-4">
+        <OrgLogo src={job.logo} alt={job.org} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-lg font-bold text-[var(--fn)]">{job.title}</h3>
+            <Arrow />
+          </div>
+          <p className="text-[var(--muted)]">{job.org}</p>
+          <p className="text-sm text-[var(--muted)]">{job.meta}</p>
+        </div>
       </div>
-      <p className="text-[var(--muted)]">{job.org}</p>
-      <p className="text-sm text-[var(--muted)]">{job.meta}</p>
     </Link>
   );
 }
@@ -92,12 +112,17 @@ export function CertificationCard({
       href={`/certifications/${cert.slug}`}
       className={`${CARD_BASE} ${className}`}
     >
-      <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-lg font-bold text-[var(--fn)]">{cert.name}</h3>
-        <Arrow />
+      <div className="flex items-center gap-4">
+        <OrgLogo src={cert.logo} alt={cert.org} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-lg font-bold text-[var(--fn)]">{cert.name}</h3>
+            <Arrow />
+          </div>
+          <p className="text-[var(--muted)]">{cert.org}</p>
+          <p className="text-sm text-[var(--muted)]">{cert.meta}</p>
+        </div>
       </div>
-      <p className="text-[var(--muted)]">{cert.org}</p>
-      <p className="text-sm text-[var(--muted)]">{cert.meta}</p>
     </Link>
   );
 }
@@ -114,12 +139,17 @@ export function VolunteeringCard({
       href={`/volunteering/${role.slug}`}
       className={`${CARD_BASE} ${className}`}
     >
-      <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-lg font-bold text-[var(--fn)]">{role.title}</h3>
-        <Arrow />
+      <div className="flex items-center gap-4">
+        <OrgLogo src={role.logo} alt={role.org} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-lg font-bold text-[var(--fn)]">{role.title}</h3>
+            <Arrow />
+          </div>
+          <p className="text-[var(--muted)]">{role.org}</p>
+          <p className="text-sm text-[var(--muted)]">{role.meta}</p>
+        </div>
       </div>
-      <p className="text-[var(--muted)]">{role.org}</p>
-      <p className="text-sm text-[var(--muted)]">{role.meta}</p>
     </Link>
   );
 }
