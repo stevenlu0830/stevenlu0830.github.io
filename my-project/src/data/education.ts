@@ -9,7 +9,7 @@ export const EDUCATION: Education[] = [
   {
     school: "The University of British Columbia",
     degree: "Bachelor of Science (BSc), Computer Science",
-    years: "Sep 2023 – Apr 2028",
+    years: "Sep 2023 – May 2028",
     logo: "/org-logo/ubc-edu.png",
   },
   {

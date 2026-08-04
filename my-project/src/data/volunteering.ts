@@ -15,8 +15,8 @@ export const VOLUNTEERING: Volunteering[] = [
     meta: "Feb 2025 – May 2026 · Arts and Culture",
     logo: "/org-logo/hkhouse-vol.jpg",
     bullets: [
-      "Led volunteers of the HK House organization by briefing them on their tasks during the event day",
-      "Managed on-site operations for a high-attendance event with over 1000 participants to ensure events run smoothly",
+      "Led 12 volunteers of the HK House organization by briefing them on their tasks during the event day",
+      "Managed on-site operations for a high-attendance event with over 1000 visitors to ensure events run smoothly",
       "Supported coordination between the volunteers and the event planning team to ensure effective communication",
       "Addressed volunteers' questions regarding their tasks to make them clear on their responsibilities",
     ],
@@ -28,10 +28,10 @@ export const VOLUNTEERING: Volunteering[] = [
     meta: "May 2024 – Present · Arts and Culture",
     logo: "/org-logo/hkhouse-vol.jpg",
     bullets: [
-      "Promoted Hong Kong culture by introducing cultural games to over 1000 participants across the world",
-      "Enhanced participants' experience by playing cultural games with them",
-      "Created a welcoming environment to let participants enjoy and immerse in a variety of cultural games",
-      "Offered hints, tips, and strategies to help participants advance in cultural games and solve riddles",
+      "Promoted Hong Kong culture by introducing cultural games to over 1000 visitors across the world",
+      "Enhanced visitors' experience by playing cultural games with them",
+      "Created a welcoming environment to let visitors enjoy and immerse in a variety of cultural games",
+      "Offered hints, tips, and strategies to help visitors advance in cultural games and solve riddles",
     ],
   },
   {

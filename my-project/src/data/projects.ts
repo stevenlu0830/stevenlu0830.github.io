@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Analysed the impact of film production teams on movie ratings and career outcomes across three genres using MongoDB queries and linear regression models",
       "Integrated datasets from IMDb, TMDb and MovieLens to construct a comprehensive dataset for analysis",
-      "Pre-processed data by handling missing values and reducing dataset size to improve processing efficiency",
+      "Pre-processed 2000 data by handling missing values and reducing dataset size to improve processing efficiency",
     ],
     skills: ["Matplotlib", "PyMongo", "Jupyter Lab", "Scikit-learn", "MongoDB"],
     attachments: [
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
       "Developed a full-stack web application to analyze UBC course, department, and instructor data using custom query functionality",
       "Designed and implemented an interactive UI enabling users to upload, manage, and query datasets efficiently",
       "Built a robust backend with Express.js and Node.js to handle data processing and query execution",
-      "Achieved 99% line coverage by writing over 220 tests using the Chai testing framework",
+      "Achieved 99% line coverage by writing more than 220 tests using the Chai testing framework",
     ],
     skills: [
       "Full-Stack Development",
