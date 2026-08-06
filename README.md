@@ -160,33 +160,7 @@ with the text stacked to its right.
 | `ScrollMemory` | ✔ | Exact scroll restore across nav |
 | `SmoothAnchors` | ✔ | Smooth scroll for nav anchors only |
 
-## 7. How-to recipes
-
-### Add an experience / volunteering item
-1. Append an entry to `EXPERIENCE` / `VOLUNTEERING` in `src/data/*.ts` with a unique
-   `slug`, the text fields, a `logo` path, and `bullets`.
-2. Drop the logo into `public/org-logo/` and mirror it in the top-level `org-logo/`.
-3. The home-page card and the `/<section>/[slug]` detail page render automatically
-   (the `[slug]` route reads the same data via `generateStaticParams`).
-
-### Add a new résumé section (new cell)
-1. Create `src/data/<section>.ts` with a typed export.
-2. Create `<Section>Runner.tsx` following the runner pattern (§4.2): `useInstall()`,
-   a `run()` that branches on `installed`, and a `CodeCell`.
-3. Add an output slot for it in `InstallContext.tsx` and include it in `runAll()`'s
-   ordered step list so **Run all** covers it.
-4. Mount the runner in `app/page.tsx` and add a nav link in `SiteNav.tsx`.
-
-### Add a contact icon
-Append to `CONTACTS` in `src/data/contacts.ts` (`type`, `href`, `icon`; set `invert`
-for dark-only logos and `lightIcon` for a light-mode variant), and add the asset to
-`public/contact-icons/`.
-
-### Change theme colors
-Edit the CSS variables in `src/app/globals.css` — the dark block (`:root`) and/or the
-light block (`:root[data-theme="light"]`). No component changes needed.
-
-## 8. Known limitations & notes
+## 7. Known limitations & notes
 
 - **No tests** — no unit/e2e suite yet; the quality gate is type-check + lint + manual
   browser verification.
@@ -197,7 +171,7 @@ light block (`:root[data-theme="light"]`). No component changes needed.
 - The in-app preview pane sometimes fails to paint below the fold; verify via DOM
   inspection (`getComputedStyle`, element queries) when screenshots come back blank.
 
-## 9. Local development
+## 8. Local development
 
 ```bash
 cd my-project
@@ -211,7 +185,7 @@ npx tsc --noEmit     # type-check
 Preview the app through the in-app Browser pane (never run dev servers via a raw
 shell). Verify changes by DOM inspection when the pane won't paint.
 
-## 10. Build & deployment
+## 9. Build & deployment
 
 - **Static export:** `next build` writes a fully static site to `my-project/out`
   (no Node server — required for GitHub Pages). `next/image` runs `unoptimized`.
@@ -222,7 +196,7 @@ shell). Verify changes by DOM inspection when the pane won't paint.
 - **Note:** dynamic `[slug]` routes require `generateStaticParams()` — a missing one
   breaks the export.
 
-## 11. Conventions & gotchas
+## 10. Conventions & gotchas
 
 - Read `CONVENTIONS.md` before contributing.
 - All colors via CSS variables — never hard-code hex in components.
@@ -231,7 +205,7 @@ shell). Verify changes by DOM inspection when the pane won't paint.
 - **Do not `git push` without explicit user confirmation** — a push to `main`
   auto-deploys to the public site.
 
-## 12. Change log
+## 11. Change log
 
 - Added org logos (leftmost) to Experience / Education / Certifications / Volunteering.
 - Sequential "Run all" with a 0.25 s per-cell stagger, centralized in `InstallContext`.
