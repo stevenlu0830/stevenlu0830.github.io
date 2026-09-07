@@ -53,16 +53,18 @@ export const PROJECTS: Project[] = [
   {
     slug: "ubc-grade-calculator",
     name: "UBC Grade Calculator",
-    dates: "Jan 2026",
+    dates: "Jan 2026 - Aug 2026",
     context: "nwHacks 2026 Hackathon Project",
     description: [
       "We often used grade calculators on the website to calculate course grades in order to track the progress of our courses so far. However, lots of calculators we found on the website are too simple such that they’ve missed subtle breakdown of course grades such as the contributions to course grade by one single assignment or one single phase of course project.",
       "Perhaps a spreadsheet would help, but you need to create a table, enter the formula to calculate the course grades. For better approximation you also need to take account of dropping or downweighting lowest grades if necessary which makes the formula more complex. UBC Grade Calculator is a web application vibe-coded by Lovable AI to simplify grade calculation process by user-friendly interfaces, buttons and drop/downweighting grade settings, and the app calculates the final grades for you.",
+      "More features are added after the hackathon, such as authentication, adding semester, selecting breakdown name, more advanced options (e.g. Equal weighting of subbreakdowns, full credit for partial marks, bonus grade), changing full marks, and more. Instead of exporting to CSV and importing CSV, You'll save your progress and reload all information into Supabase, which is a backend-as-a-service platform that provides a database, authentication, and storage.",
     ],
     bullets: [
-      "Conceptualized and rapidly prototyped a comprehensive web application during nwHacks 2026, utilizing ChatGPT for feature ideation and Lovable AI for rapid code generation and deployment.",
-      "Engineered intuitive user interfaces that simplify complex grading calculations, allowing students to dynamically track assignment breakdowns, project phases, and overall course progress.",
-      "Implemented advanced grade-tracking logic, including customized settings for dropping or downweighting the lowest grades, replacing manual and complex spreadsheet formulas with a seamless, automated tool.",
+      "Developed a full-stack grade tracking web application with React and TypeScript that calculates real-time final percentages and letter grades as users input weighted course components across multiple semesters",
+      "Implemented configurable grading policies including drop-lowest, downweighting, full-credit, and bonus systems, with automatic mark rescaling and weight validation to ensure calculation precision",
+      "Integrated Supabase authentication and PostgreSQL cloud synchronization, enabling cross-device progress persistence and account recovery for returning users",
+      "Achieved 100% line and 99% branch test coverage through 774 unit and integration tests using Vitest and React Testing Library, ensuring application robustness and error prevention"
     ],
     skills: ["Lovable", "Vibe Coding"],
     links: [
@@ -138,7 +140,8 @@ export const PROJECTS: Project[] = [
       "Nest Finder is a centralised web application for UBC students to search for houses in Vancouver. Instead of visiting multiple websites, we used software such as Facebook Marketplace Scraper and Kijiji to collect data so that users can compare prices and areas of different houses in just one application.",
     bullets: [
       "Created the Nest Finder web application using HTML and CSS that acts as a centralized platform for searching houses",
-      "Enabled the log-in feature using JavaScript to authenticate a user before the user accesses the main website",
+      "Enabled the log-in and register account features using JavaScript to authenticate a user before the user accesses the main website",
+      "Implemented an interactive search interface with keyword filtering and toggles, streamlining the housing discovery process for UBC students",
       "Designed the user interface by drawing the layout of different pages and creating the transitions between them using Figma",
     ],
     skills: ["HTML", "CSS", "JavaScript", "Figma", "Front-End Development"],
