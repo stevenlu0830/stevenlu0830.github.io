@@ -14,7 +14,6 @@ const NAV_ITEMS = [
   { label: "Relevant Courses", href: "#courses" },
   { label: "Certifications", href: "#certifications" },
   { label: "Volunteering", href: "#volunteering" },
-  { label: "Fun Facts", href: "#fun-facts" },
   { label: "Contacts", href: "#contacts" },
 ];
 

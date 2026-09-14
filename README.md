@@ -11,7 +11,7 @@ This personal website is made by Claude Code
 
 An interactive personal portfolio styled as a **VS Code / Jupyter Notebook**. Every
 content section (About, Experience, Projects, Technical Skills, Education, Relevant
-Courses, Certifications, Volunteering, Fun Facts) is rendered as a **runnable Python
+Courses, Certifications, Volunteering) is rendered as a **runnable Python
 code cell**. The visitor first "runs" `!pip install stevenlu0830`; only then do the
 other cells produce output. Running a cell before install yields a simulated Python
 `NameError`, reinforcing the notebook illusion.
@@ -76,10 +76,10 @@ A single React Context, mounted in `app/layout.tsx`, holds:
 
 - `installed: boolean` and `install()`
 - one output-state slot per section (`aboutOutput`, `experienceOutput`, …,
-  plus grouped `techOutputs` and `funOutputs`)
-- `runAll()` — builds an ordered list of ~16 step functions (pip → about →
-  experience → projects → 4× skills → education → courses → certs → volunteering →
-  4× fun facts) and fires them with `setTimeout(step, i * 250)` for a visible
+  plus grouped `techOutputs`)
+- `runAll()` — builds an ordered list of ~12 step functions (pip → about →
+  experience → projects → 4× skills → education → courses → certs →
+  volunteering) and fires them with `setTimeout(step, i * 250)` for a visible
   top-to-bottom cascade.
 
 **Why in-memory (not `localStorage`):** run progress must survive client-side
@@ -129,7 +129,6 @@ batched state changes in one tick don't clobber each other.
 | `education.ts` | `EDUCATION: Education[]` | school, degree, years, logo |
 | `skills.ts` | `SKILLS` (by category) | name, icon, invert |
 | `courses.ts` | relevant courses | code, name |
-| `funfacts.ts` | travel/songs/languages + title args | — |
 | `contacts.ts` | `CONTACTS[]` | type, href, icon, invert, lightIcon |
 
 Cards for these live in `cards.tsx`; each experience/education/cert/volunteering row
@@ -151,7 +150,6 @@ with the text stacked to its right.
 | `CoursesRunner` | ✔ | List-of-dicts course output |
 | `CertificationsRunner` | ✔ | Certification cards (mobile: 2 + View All) |
 | `VolunteeringRunner` | ✔ | Volunteering cards (mobile: 2 + View All) |
-| `FunFactsRunner` | ✔ | 4 cells: travel, canto-pop, other songs, languages |
 | `CodeCell` | — | Reusable cell shell (run button + code + output) |
 | `cards` | — | Card + `OrgLogo`, `SkillTag`, `ViewAllButton` |
 | `ContactIcons` | ✔ | Theme-aware contact icon row |

@@ -9,12 +9,6 @@ import {
   type SetStateAction,
 } from "react";
 import { SKILLS } from "@/data/skills";
-import {
-  TRAVEL_ARG,
-  CANTO_ARG,
-  OTHER_ARG,
-  LANG_ARG,
-} from "@/data/funfacts";
 
 type AboutOutput = null | "intro" | "error";
 type ExperienceOutput = null | "cards" | "error";
@@ -48,11 +42,6 @@ type CellCtx = {
   setCertsOutput: (v: SimpleOutput) => void;
   volunteeringOutput: SimpleOutput;
   setVolunteeringOutput: (v: SimpleOutput) => void;
-  // Fun Facts: whether the first cell defined `fun_facts`, plus per-cell output.
-  funDefined: boolean;
-  setFunDefined: (v: boolean) => void;
-  funOutputs: MultiOutputs;
-  setFunOutputs: Dispatch<SetStateAction<MultiOutputs>>;
 };
 
 const Ctx = createContext<CellCtx>({
@@ -77,10 +66,6 @@ const Ctx = createContext<CellCtx>({
   setCertsOutput: () => {},
   volunteeringOutput: null,
   setVolunteeringOutput: () => {},
-  funDefined: false,
-  setFunDefined: () => {},
-  funOutputs: {},
-  setFunOutputs: () => {},
 });
 
 // Holds the interactive code-cell state (pip installed, About / Experience
@@ -100,15 +85,11 @@ export function InstallProvider({ children }: { children: ReactNode }) {
   const [certsOutput, setCertsOutput] = useState<SimpleOutput>(null);
   const [volunteeringOutput, setVolunteeringOutput] =
     useState<SimpleOutput>(null);
-  const [funDefined, setFunDefined] = useState(false);
-  const [funOutputs, setFunOutputs] = useState<MultiOutputs>({});
 
   // Run every cell top-to-bottom, each 0.25s after the previous one.
   const runAll = () => {
     const markTech = (category: string) =>
       setTechOutputs((prev) => ({ ...prev, [category]: "ok" }));
-    const markFun = (arg: string) =>
-      setFunOutputs((prev) => ({ ...prev, [arg]: "ok" }));
 
     const steps: (() => void)[] = [
       () => setInstalled(true), // pip install
@@ -124,13 +105,6 @@ export function InstallProvider({ children }: { children: ReactNode }) {
       () => setCoursesOutput("ok"),
       () => setCertsOutput("ok"),
       () => setVolunteeringOutput("ok"),
-      () => {
-        setFunDefined(true);
-        markFun(TRAVEL_ARG);
-      },
-      () => markFun(CANTO_ARG),
-      () => markFun(OTHER_ARG),
-      () => markFun(LANG_ARG),
     ];
     steps.forEach((step, i) => setTimeout(step, i * 250));
   };
@@ -159,10 +133,6 @@ export function InstallProvider({ children }: { children: ReactNode }) {
         setCertsOutput,
         volunteeringOutput,
         setVolunteeringOutput,
-        funDefined,
-        setFunDefined,
-        funOutputs,
-        setFunOutputs,
       }}
     >
       {children}

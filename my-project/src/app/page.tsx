@@ -10,7 +10,6 @@ import EducationRunner from "@/components/EducationRunner";
 import CoursesRunner from "@/components/CoursesRunner";
 import CertificationsRunner from "@/components/CertificationsRunner";
 import VolunteeringRunner from "@/components/VolunteeringRunner";
-import FunFactsRunner from "@/components/FunFactsRunner";
 import ContactIcons from "@/components/ContactIcons";
 import { CONTACTS } from "@/data/contacts";
 
@@ -86,9 +85,6 @@ export default function Home() {
 
         {/* Volunteering */}
         <VolunteeringRunner />
-
-        {/* Fun Facts */}
-        <FunFactsRunner />
 
         {/* Contacts — TODO: replace the placeholder links below with your real
             LinkedIn URL, email address, and GitHub username before publishing */}

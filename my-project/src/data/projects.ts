@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
       "Developed a full-stack grade tracking web application with React and TypeScript that calculates real-time final percentages and letter grades as users input weighted course components across multiple semesters",
       "Implemented configurable grading policies including drop-lowest, downweighting, full-credit, and bonus systems, with automatic mark rescaling and weight validation to ensure calculation precision",
       "Integrated Supabase authentication and PostgreSQL cloud synchronization, enabling cross-device progress persistence and account recovery for returning users",
-      "Achieved 100% line and 99% branch test coverage through 774 unit and integration tests using Vitest and React Testing Library, ensuring application robustness and error prevention"
+      "Achieved 100% line and 99% branch test coverage through 770+ unit and integration tests using Vitest and React Testing Library, ensuring application robustness and error prevention"
     ],
     skills: ["Lovable", "Vibe Coding"],
     links: [
