@@ -107,7 +107,7 @@ export default function TechSkillsRunner() {
                 )}
                 {idx === 1 && (
                   <span className="block text-[var(--comment)]">
-                    # Run the code box above before running the following three
+                    # Run the code box above before running the following five
                     code boxes
                   </span>
                 )}

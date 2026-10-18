@@ -49,7 +49,7 @@
 - `AboutRunner.tsx` — `from stevenlu0830 import About`
 - `ExperienceRunner.tsx` — outputs Experience cards
 - `ProjectsRunner.tsx` — outputs Project cards (mobile: top 2 + View All)
-- `TechSkillsRunner.tsx` — 4 linked cells, list-of-dicts output with icons
+- `TechSkillsRunner.tsx` — 6 linked cells, list-of-dicts output with icons
 - `EducationRunner.tsx` — inline education list (logo + text)
 - `CoursesRunner.tsx` — list-of-dicts course output
 - `CertificationsRunner.tsx` — Certification cards (mobile: top 2 + View All)
