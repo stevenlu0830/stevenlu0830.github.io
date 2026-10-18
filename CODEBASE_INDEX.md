@@ -49,7 +49,7 @@
 - `AboutRunner.tsx` — `from stevenlu0830 import About`
 - `ExperienceRunner.tsx` — outputs Experience cards
 - `ProjectsRunner.tsx` — outputs Project cards (mobile: top 2 + View All)
-- `TechSkillsRunner.tsx` — 6 linked cells, list-of-dicts output with icons
+- `TechSkillsRunner.tsx` — 6 linked cells, Python list-of-strings output
 - `EducationRunner.tsx` — inline education list (logo + text)
 - `CoursesRunner.tsx` — list-of-dicts course output
 - `CertificationsRunner.tsx` — Certification cards (mobile: top 2 + View All)
@@ -75,7 +75,7 @@
 - `certifications.ts` — `Certification[]` (`slug`, `name`, `org`, `meta`, `logo`, `pdf?`)
 - `volunteering.ts` — `Volunteering[]` (`slug`, `title`, `org`, `meta`, `logo`, `bullets`)
 - `education.ts` — `Education[]` (`school`, `degree`, `years`, `logo`)
-- `skills.ts` — `Skill[]` grouped by category (name + icon path + invert flag)
+- `skills.ts` — skill names (`string[]`) grouped by category, worded exactly as on the résumé
 - `courses.ts` — relevant courses
 - `funfacts.ts` — travel / songs / languages + section-title arg constants
 - `contacts.ts` — `CONTACTS[]` (type, href, icon, `invert`, `lightIcon`)
@@ -84,7 +84,6 @@
 
 - `contact-icons/` — GitHub / LinkedIn / Gmail (GitHub has a light-mode variant)
 - `org-logo/` — org logos for experience / education / certifications / volunteering
-- `programming-icons/` — tech-skill icons
 - `cert-attachments/` — certificate PDFs
 - `projects-file-attachments/` — project files
 - `*.svg` — Next.js starter icons (mostly unused)

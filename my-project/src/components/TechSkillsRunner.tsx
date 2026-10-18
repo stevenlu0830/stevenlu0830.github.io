@@ -1,31 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import { useInstall } from "./InstallContext";
-import { SKILLS, type Skill } from "@/data/skills";
+import { SKILLS } from "@/data/skills";
 
-// Renders the Python-style list-of-dicts output, printing each icon as its
-// actual image where the icon string would be.
-function SkillListOutput({ items }: { items: Skill[] }) {
+// Renders the Python-style list-of-strings output, one item per line with
+// later lines indented to sit under the first item (like pprint).
+function SkillListOutput({ items }: { items: string[] }) {
   return (
     <div className="text-[var(--cli)]">
       {items.map((item, i) => (
-        <div key={item.name} className="whitespace-nowrap">
-          {i === 0 ? "[" : ""}
-          {"{'name': '"}
-          {item.name}
-          {"', 'icon': '"}
-          <Image
-            src={item.icon}
-            alt=""
-            width={16}
-            height={16}
-            unoptimized
-            className={`inline-block h-4 w-4 object-contain align-middle${
-              item.invert ? " invert" : ""
-            }`}
-          />
-          {i === items.length - 1 ? "'}]" : "'},"}
+        <div key={item} className="whitespace-nowrap">
+          {i === 0 ? "[" : " "}
+          {`"${item}"`}
+          {i === items.length - 1 ? "]" : ","}
         </div>
       ))}
     </div>
