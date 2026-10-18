@@ -3,19 +3,23 @@
 import { useInstall } from "./InstallContext";
 import { SKILLS } from "@/data/skills";
 
-// Renders the Python-style list-of-strings output, one item per line with
-// later lines indented to sit under the first item (like pprint).
+// Renders the Python-style list-of-strings output as one flowing line that
+// wraps at the box edge. Each item is kept whole, so lines only break between
+// items (after the comma), never inside a skill name.
 function SkillListOutput({ items }: { items: string[] }) {
   return (
-    <div className="text-[var(--cli)]">
+    <p className="text-[var(--cli)]">
       {items.map((item, i) => (
-        <div key={item} className="whitespace-nowrap">
-          {i === 0 ? "[" : " "}
-          {`"${item}"`}
-          {i === items.length - 1 ? "]" : ","}
-        </div>
+        <span key={item}>
+          <span className="whitespace-nowrap">
+            {i === 0 ? "[" : ""}
+            {`"${item}"`}
+            {i === items.length - 1 ? "]" : ","}
+          </span>
+          {i === items.length - 1 ? "" : " "}
+        </span>
       ))}
-    </div>
+    </p>
   );
 }
 
