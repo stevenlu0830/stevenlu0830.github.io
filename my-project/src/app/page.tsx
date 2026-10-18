@@ -52,7 +52,7 @@ export default function Home() {
             Steven Lu
           </h1>
           <p className="mt-4 text-[var(--foreground)]">
-            Computer Science (AI Option) @ The University of British Columbia
+            Computer Science (Option in AI) @ The University of British Columbia
           </p>
           <p className="mt-2 text-sm text-[var(--foreground)]">
             AI · Machine Learning · Software Engineering · Data Science · Web
