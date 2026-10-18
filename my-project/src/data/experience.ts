@@ -9,6 +9,18 @@ export type Job = {
 
 export const EXPERIENCE: Job[] = [
   {
+    slug: "private-tutor",
+    title: "Private Tutor",
+    org: "Self-employed",
+    meta: "Sep 2026 – Present · Hong Kong SAR · On-site",
+    logo: "/org-logo/person.webp",
+    bullets: [
+      "Providing one-on-one mathematics tutoring to grade 8 and grade 11 students to build problem-solving skills.",
+      "Creating in-class exercises to strengthen students understanding of key math concepts.",
+      "Preparing after-class homework to consolidate student learning."
+    ],
+  },
+  {
     slug: "fano-labs",
     title: "Software Engineering Intern",
     org: "Fano Labs · Co-op",
@@ -37,13 +49,5 @@ export const EXPERIENCE: Job[] = [
       "Compared the performance of AI agent studios using Dyna's AI Agent Builder Platform, leveraging knowledge management, knowledge space, and character configuration to evaluate effectiveness and optimize outcomes.",
       "Collaborated with a banking client to gather, track, and regularly refine user requirements, ensuring alignment between business needs and AI solution design.",
     ],
-  },
-  {
-    slug: "private-tutor",
-    title: "Private Tutor",
-    org: "Self-employed",
-    meta: "",
-    logo: "/org-logo/person.webp",
-    bullets: [],
   },
 ];
