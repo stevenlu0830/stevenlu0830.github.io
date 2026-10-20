@@ -70,7 +70,7 @@
 
 ## Data — `my-project/src/data/` (typed content, no logic)
 
-- `experience.ts` — `Job[]` (`slug`, `title`, `org`, `meta`, `logo`, `bullets`)
+- `experience.ts` — `Job[]` (`slug`, `title`, `org`, `meta`, `logo`, `bullets`, optional `projects` of `{ name, bullets }`)
 - `projects.ts` — `Project[]` (largest data file; names, dates, skills, description, attachments)
 - `certifications.ts` — `Certification[]` (`slug`, `name`, `org`, `meta`, `logo`, `pdf?`)
 - `volunteering.ts` — `Volunteering[]` (`slug`, `title`, `org`, `meta`, `logo`, `bullets`)
