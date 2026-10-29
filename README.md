@@ -1,6 +1,4 @@
 # Personal Website
-This personal website is made by Claude Code
-
 # Technical README
 
 > Living technical documentation for Steven Lu's personal portfolio website.
